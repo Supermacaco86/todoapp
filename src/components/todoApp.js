@@ -34,8 +34,11 @@ export default function TodoApp(){
             onClick={handleSubmit}
             type="submit" 
             value="Create todo"/>
-
-            {title}
         </form>
+        <div className="todoContainer">
+            {todo.map((e)=>(
+                    <div key={e.id}>{e.title}</div>
+                ))}
+        </div>
     </div>;
 }
