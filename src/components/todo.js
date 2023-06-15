@@ -1,6 +1,6 @@
 import { useState } from "react"
 
-export default function Todo({e, onUpdate}){
+export default function Todo({e, onUpdate, onDelete}){
     const [isEdit, setIsEdit] = useState(false);
 
     function FormEdit(){
@@ -27,12 +27,13 @@ export default function Todo({e, onUpdate}){
     }
 
     function TodoElement(){
+
         return <div className="todoInfo">
-        {e.title}<button onClick={()=> setIsEdit(true)}>Edit</button>
-        <button>Delete</button>
+        {e.title}
+        <button onClick={()=> setIsEdit(true)}>Edit</button>
+        <button onClick={(e)=> onDelete(e.id)}>Delete</button>
     </div>    
     }
-
 
     return(
         <div className="todo">
