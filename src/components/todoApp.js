@@ -1,4 +1,5 @@
 import {useState} from "react"
+import Todo from "./todo";
 
 export default function TodoApp(){
     const [title, setTitle] = useState("Hola");
@@ -21,6 +22,13 @@ export default function TodoApp(){
         setTodo(temp);
     }
 
+    function handleUpdate(id, value){
+        const temp = [...todo]
+        const item = temp.find(item => item.id === id)
+        item.title = value
+        setTodo(temp)
+    }
+
     return <div className="todocontainer">
         <form 
         className="todoCreateForm"
@@ -37,7 +45,7 @@ export default function TodoApp(){
         </form>
         <div className="todoContainer">
             {todo.map((e)=>(
-                    <div key={e.id}>{e.title}</div>
+                    <Todo key={e.id} e={e} onUpdate={handleUpdate}/>
                 ))}
         </div>
     </div>;
