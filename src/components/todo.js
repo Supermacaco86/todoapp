@@ -29,12 +29,11 @@ export default function Todo({e, onUpdate, onDelete}){
     function TodoElement(){
 
         return <div className="todoInfo">
-        {e.title}
-        <button onClick={()=> setIsEdit(true)}>Edit</button>
-        <button onClick={(e)=> onDelete(e.id)}>Delete</button>
-    </div>    
+            <span className="todoTitle">{e.title}</span>
+            <button className="button" onClick={()=> setIsEdit(true)}>Edit</button>
+            <button className="buttonDelete" onClick={()=> onDelete(e.id)}>Delete</button>
+        </div>    
     }
-
     return(
         <div className="todo">
             {isEdit? <FormEdit/> : <TodoElement/>}

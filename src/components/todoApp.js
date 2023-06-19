@@ -1,5 +1,6 @@
 import {useState} from "react"
 import Todo from "./todo";
+import "./todoApp.css"
 
 export default function TodoApp(){
     const [title, setTitle] = useState("");
@@ -31,12 +32,16 @@ export default function TodoApp(){
     }
 
     function handleDelete(id){
-        const temp = todo.filter((e) => e.id !== id);
-        setTodo(temp);
+        // const temp = todo.filter((item) => item.id !== id);
+        // setTodo([...temp]);
+
+        const temp = [...todo]
+        const e = temp.filter((e) => e.id !== id);
+        setTodo(e);
       }
     
-
-    return(<div className="todocontainer">
+    return(
+    <div className="todoContainer">
         <form 
         className="todoCreateForm"
         onSubmit={handleSubmit}>
@@ -50,7 +55,7 @@ export default function TodoApp(){
             type="submit" 
             value="Create todo"/>
         </form>
-        <div className="todoContainer">
+        <div className="todosContainer">
             {todo.map((e)=>(
                     <Todo
                     key={e.id}
